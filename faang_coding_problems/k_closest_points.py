@@ -11,10 +11,13 @@ class Solution:
         for x,y in points:
             current_distance=math.sqrt(x**2+y**2)
             distances.append((current_distance,x,y))
-        distances.sort( key=lambda x:x[0])
-        for _, x, y in distances[:k]:
-            result.append([x, y])
+        distances.sort(key=lambda x:-(x[0]))
+        while k>0:
+            d,x,y=distances.pop()
+            result.append([x,y])
+            k-=1
         return result
+        
 
 
 def main() -> None:

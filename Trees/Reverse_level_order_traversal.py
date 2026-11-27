@@ -19,7 +19,8 @@ class TreeNode:
 def reverse_level_order_traversal(root: TreeNode) -> list[list[int]]:
     """Return levels from deepest to shallowest, each from left to right."""
     q=deque([root])
-    result=[]
+    # result=[]
+    result=deque([])
     while q:
         current_list=[]
         count=len(q)
@@ -30,8 +31,10 @@ def reverse_level_order_traversal(root: TreeNode) -> list[list[int]]:
                 q.append(current.left)
             if current.right:
                 q.append(current.right)
-        result.append(current_list)
-    return result[::-1]
+        # result.append(current_list)
+        result.appendleft(current_list)
+    # return result[::-1]
+    return list(result)
 
 
 def _tree_values(root: TreeNode) -> list[int | None]:
